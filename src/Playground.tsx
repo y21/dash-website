@@ -70,6 +70,8 @@ class Playground extends Component<{}, PlaygroundState> {
         const code = this.getCode();
         if (!code) return this.reportError('failed to get code');
 
+        localStorage.setItem('code', code);
+
         const vm = await this.getOrInitVM();
 
         try {
@@ -129,8 +131,12 @@ class Playground extends Component<{}, PlaygroundState> {
         const params = new URLSearchParams(document.location.search);
         const code = params.get('code');
 
-        if (code) model.setValue(atob(code));
-        else model.setValue(DEFAULT_CODE.trim());
+        if (code) {
+            model.setValue(atob(code));
+        } else {
+            const code = localStorage.getItem('code') || DEFAULT_CODE;
+            model.setValue(code.trim());
+        }
 
         this.setState({ ...this.state, editor });
     }
