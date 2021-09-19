@@ -1,0 +1,4 @@
+node_modules
+build
+public/assets/dash.rev
+public/assets/dash.wasm
