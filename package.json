@@ -8,11 +8,12 @@
     "monaco-editor": "^0.27.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3"
+    "react-scripts": "^5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build-wasm": "cd dash/crates/dash_wasm && wasm-pack build --target web && cp -r pkg ../../../src/",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
